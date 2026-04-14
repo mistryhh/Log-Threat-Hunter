@@ -61,12 +61,12 @@ Once Running all these scripts you should see two images in the `outputs/visuali
 1. **Brute-Force Detection**:
 The system successfully flags an isolated IP address (10.0.0.99) executing over 50 failed login attempts in a localised time window.
 
-![Brute Force Spike](examples\brute_force_spike.png)
+![Brute Force Spike](./examples/brute_force_spike.png)
 
 2. **Off-Hours Access Patterns**:
 The time-series histogram categorises successful logins by hour, highlighting the anomalies in the red "Flagged Off-Hours" zone.
 
-![Access Patterns](examples\login_hours_distribution.png)
+![Access Patterns](./examples/login_hours_distribution.png)
 
 ## Key Learnings
 * **Defensive Programming:** Implementing try/except blocks and dynamic folder generation ensures the tool runs reliably on different environments.
