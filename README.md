@@ -7,6 +7,16 @@ The tool identifies two primary threat vectors:
 1. **Brute-Force Attacks:** High-frequency failed login attempts from a single IP address within a rolling 5-minute window.
 2. **Suspicious Off-Hours Access:** Successful user logins occurring outside of standard organisational working hours (00:00 - 05:00).
 
+## Technology Stack
+
+![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+![Seaborn](https://img.shields.io/badge/Seaborn-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+
+* **Pandas:** For handling missing values, time-series transformations, and data aggregation.
+* **Matplotlib & Seaborn:** For generating professional security dashboards.
+
 ## Repository Structure
 ```text
 Log-Threat-Hunter/
@@ -20,12 +30,6 @@ Log-Threat-Hunter/
 ├── requirements.txt                # Python dependencies
 └── README.md                       # Project documentation
 ```
-
-## Technology Stack
-![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
-
-* **Pandas:** For handling missing values, time-series transformations, and data aggregation.
-* **Matplotlib & Seaborn:** For generating professional security dashboards.
 
 ## Setup & Installation
 1. Clone the Repository:
@@ -61,12 +65,12 @@ Once Running all these scripts you should see two images in the `outputs/visuali
 1. **Brute-Force Detection**:
 The system successfully flags an isolated IP address (10.0.0.99) executing over 50 failed login attempts in a localised time window.
 
-![Brute Force Spike](examples\brute_force_spike.png)
+![Brute Force Spike](./examples\brute_force_spike.png)
 
 2. **Off-Hours Access Patterns**:
 The time-series histogram categorises successful logins by hour, highlighting the anomalies in the red "Flagged Off-Hours" zone.
 
-![Access Patterns](examples\login_hours_distribution.png)
+![Access Patterns](./examples\login_hours_distribution.png)
 
 ## Key Learnings
 * **Defensive Programming:** Implementing try/except blocks and dynamic folder generation ensures the tool runs reliably on different environments.
