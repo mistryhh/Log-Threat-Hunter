@@ -14,12 +14,20 @@ Built to reflect the requirements of a 24/7 mission-critical Security Operations
 
 ## 🖥️ Dashboard Preview
 
+<<<<<<< HEAD
 *(You can add a screenshot or GIF of your Streamlit dashboard here, just like you did for ESLM!)*
 `![Threat Hunter Dashboard](./Threat_Hunter_Dashboard.gif)`
+=======
+![Brute Force Spike](./examples/brute_force_spike.png)
+>>>>>>> 28041e948b06bdce8b212665fcc462ff5e8879c5
 
 ---
 
+<<<<<<< HEAD
 ## 🚀 Key Threat Intelligence Discovered
+=======
+![Access Patterns](./examples/login_hours_distribution.png)
+>>>>>>> 28041e948b06bdce8b212665fcc462ff5e8879c5
 
 * **Brute-Force Attack Detection:** Automatically identified high-velocity failed login attempts, aggregating failure counts by IP address to flag automated attacks (>10 failures per 5-minute window).
 * **Off-Hours Access Monitoring:** Successfully isolated successful authentication events occurring outside of normal operating hours (00:00 - 05:00), allowing for rapid incident triage.
