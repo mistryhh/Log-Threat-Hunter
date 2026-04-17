@@ -1,78 +1,42 @@
-# Log-Threat-Hunter: Automated Security Log Anomaly Detector
-
-## Project Overview
-This project simulates a Cyber Security Threat Hunting pipeline. It automatically ingests, cleans, and analyses system login logs to detect suspicious behavior. Built specifically to demonstrate operational security awareness, data manipulation with **Pandas**, and automated anomaly detection.
-
-The tool identifies two primary threat vectors:
-1. **Brute-Force Attacks:** High-frequency failed login attempts from a single IP address within a rolling 5-minute window.
-2. **Suspicious Off-Hours Access:** Successful user logins occurring outside of standard organisational working hours (00:00 - 05:00).
-
-## Technology Stack
+# Log-Threat-Hunter 🛡️
 
 ![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
-![Seaborn](https://img.shields.io/badge/Seaborn-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-%23FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)
 
-* **Pandas:** For handling missing values, time-series transformations, and data aggregation.
-* **Matplotlib & Seaborn:** For generating professional security dashboards.
+## 📖 Project Overview
 
-## Repository Structure
+This project is an **Automated Security Log Anomaly Detector** designed to simulate the detection, triage, and response to real-world cyber threats. 
+
+Built to reflect the requirements of a 24/7 mission-critical Security Operations Center (SOC), this tool ingests raw server logs and applies data analysis to hunt for threat indicators. It automatically flags suspicious activity—such as brute-force attacks and unauthorized out-of-hours access—demonstrating how data engineering can be applied to front-line digital defense.
+
+---
+
+## 🖥️ Dashboard Preview
+
+*(You can add a screenshot or GIF of your Streamlit dashboard here, just like you did for ESLM!)*
+`![Threat Hunter Dashboard](./Threat_Hunter_Dashboard.gif)`
+
+---
+
+## 🚀 Key Threat Intelligence Discovered
+
+* **Brute-Force Attack Detection:** Automatically identified high-velocity failed login attempts, aggregating failure counts by IP address to flag automated attacks (>10 failures per 5-minute window).
+* **Off-Hours Access Monitoring:** Successfully isolated successful authentication events occurring outside of normal operating hours (00:00 - 05:00), allowing for rapid incident triage.
+* **Interactive SOC Visualisation:** Transformed static CSV logs into a real-time, interactive threat dashboard to streamline the incident handling process.
+
+---
+
+## 📂 Repository Structure
+
 ```text
-Log-Threat-Hunter/
-│
-├── scripts/
-│   ├── generate_synthetic_logs.py  # Generates realistic simulated log data
-│   ├── anomaly_detector.py         # Pandas-based threat hunting logic
-│   └── visualiser.py               # Generates Matplotlib/Seaborn dashboards
-│
-├── .gitignore                      # Prevents raw data from being committed
-├── requirements.txt                # Python dependencies
-└── README.md                       # Project documentation
-```
-
-## Setup & Installation
-1. Clone the Repository:
-```bash
-git clone https://github.com/mistryhh/Log-Threat-Hunter.git
-cd Log-Threat-Hunter
-```
-2. Install Required Dependancies:
-```bash
-pip install -r requirements.txt
-```
-
-## Usage: Running the Pipeline
-1. **Generate Simulated Logs**:
-Because real security logs are sensitive and should never be public, this script generates a realistic synthetic dataset (`raw_server_logs.csv`) containing normal traffic and injected threats.
-```bash
-cd scripts
-python generate_synthetic_logs.py
-```
-2. **Run the Threat Hunter**: 
-This script parses the logs, converts timestamps, and isolates the anomalous IP addresses and users.
-```bash
-python anomaly_detector.py
-```
-3. **Generate Visual Dashboards**: This script creates visual representations of the flagged data to aid security analysts in reporting.
-```bash
-python visualiser.py
-```
-
-Once Running all these scripts you should see two images in the `outputs/visualisations` folder. These images are the visual representations of the Brute Force and Access Patterns.
-
-## Results & Visualisations
-1. **Brute-Force Detection**:
-The system successfully flags an isolated IP address (10.0.0.99) executing over 50 failed login attempts in a localised time window.
-
-![Brute Force Spike](./examples\brute_force_spike.png)
-
-2. **Off-Hours Access Patterns**:
-The time-series histogram categorises successful logins by hour, highlighting the anomalies in the red "Flagged Off-Hours" zone.
-
-![Access Patterns](./examples\login_hours_distribution.png)
-
-## Key Learnings
-* **Defensive Programming:** Implementing try/except blocks and dynamic folder generation ensures the tool runs reliably on different environments.
-* **Data Privacy:** Utilising `.gitignore` to prevent simulated (or real) server logs from leaking into public repositories.
-* **Time-Series Analysis:** Leveraging pd.Grouper for efficient, memory-safe rolling timeframe analysis.
+log-threat-hunter/
+├── data/                      # (Git-ignored: Generated locally via script)
+│   └── raw/                   # Raw synthetic server logs
+├── scripts/                       
+│   ├── generate_synthetic_logs.py # Step 1: Creates noisy system logs with injected anomalies
+│   └── anomaly_detector.py        # Step 2: CLI-based threat hunting algorithm
+├── app/                       
+│   └── dashboard.py               # Step 3: Streamlit interactive SOC dashboard
+├── requirements.txt           # Python dependencies
+└── README.md
